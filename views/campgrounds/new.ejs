@@ -1,63 +1,65 @@
-<% layout('layouts/boilerplate')%>
-<div class="row">
-    <h1 class="text-center">New Campground</h1>
-    <div class="col-md-6 offset-md-3">
-        <form action="/campgrounds" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
-            <div class="mb-3">
-                <label class="form-label" for="title">Title</label>
-                <input class="form-control" type="text" id="title" name="campground[title]" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="mb-3">
-                <label class="form-label" for="location">Location</label>
-                <input class="form-control" type="text" id="location" name="campground[location]" required>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
+<% layout('layout/boilerplate.ejs') %>
 
-            <!-- <div class="mb-3">
-                <label class="form-label" for="image">Image Url</label>
-                <input class="form-control" type="text" id="image" name="campground[image]" required>
-                <div class="valid-feedback">
-                    Looks good!
+    <div class="row">
+        <h1 class="text-center">New Campground</h1>
+        <div class="col-md-6">
+            <form action="/campgrounds" method="POST" novalidate class="validated-form" enctype="multipart/form-data">
+                <div class="mb-3">
+                    <label class="form-label" for="title">Title</label>
+                    <input class="form-control" type="text" name="campground[title]" id="title" required>
+                    <div class="valid-feedback">
+                        looks good!
+                    </div>
                 </div>
-            </div> -->
-            <div class="mb-3">
-                <label class="form-label" for="price">Campground Price</label>
-                <div class="input-group">
-                    <span class="input-group-text" id="price-label">$</span>
-                    <input type="text" class="form-control" id="price" placeholder="0.00" aria-label="price"
-                        aria-describedby="price-label" name="campground[price]" required>
+                <div class="mb-3">
+                    <label class="form-label" for="location">Location</label>
+                    <input class="form-control" type="text" name="campground[location]" id="location" required>
+                    <div class="valid-feedback">
+                        looks good!
+                    </div>
                 </div>
-                <div class="valid-feedback">
-                    Looks good!
+                <div class="mb-3">
+                    <label for="formFileSm" class="form-label"><i class="fas fa-camera-retro"></i> Choose Images</label>
+                    <input class="form-control form-control-sm" id="formFileSm" type="file" name="image" multiple>
                 </div>
-            </div>
+                <div class="mb-3">
+                    <label class="form-label" for="price">Price</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="price-label">Rs</span>
+                        </div>
+                        <input type="text" id="price" class="form-control" placeholder="0.00" aria-label="price"
+                            aria-describedby="price-label" name="campground[price]" required>
+                        <div class="valid-feedback">
+                            looks good!
+                        </div>
+                    </div>
+                </div>
+                <div class="dropdown mb-3">
+                    <label class="form-label me-3" for="category">Select Category</label>
+                    <select name="campground[category]" id="category">
+                        <option value="" selected>Category</option>
+                        <% for( let category of categories ) { %>
+                            <option value="<%= category._id %>"><%= category.title %> </option>
+                        <% } %>
+                        
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label class="form-label" for="description">Description</label>
+                    <textarea class="form-control" type="text" name="campground[description]" id="description"
+                        required></textarea>
+                    <div class="valid-feedback">
+                        looks good!
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <button class="btn btn-dark">Add Campground</button>
+                </div>
 
-            <div class="mb-3">
-                <label class="form-label" for="description">Description</label>
-                <textarea class="form-control" type="text" id="description" name="campground[description]"
-                    required></textarea>
-                <div class="valid-feedback">
-                    Looks good!
-                </div>
-            </div>
-            <div class="mb-3">
-                <div class="form-file custom-file">
-                    <input type="file" class="form-file-input" id="image" name="image" multiple>
-                    <label class="form-file-label" for="image">
-                        <span class="form-file-text custom-file-label">Choose image(s)...</span>
-                        <span class="form-file-button">Browse</span>
-                    </label>
-                </div>
-            </div>
-            <div class="mb-3">
-                <button class="btn btn-success">Add Campground</button>
-            </div>
-        </form>
-        <a href="/campgrounds">All Campgrounds</a>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <img src="/img/Camping Vector Illustration.png" class="rounded float-end" alt="..." style="width: 100%;">
+        </div>
     </div>
-</div>
