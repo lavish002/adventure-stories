@@ -18,11 +18,11 @@ db.once('open', () => {
     console.log('Database Connected');
 });
 
-const user = ["615982985ca687a625b4acec", "6283dbd35be36101a6d531f6", "6159c91a79bc9b6ee481a9fb"]
+// const user = ["615982985ca687a625b4acec", "6283dbd35be36101a6d531f6", "6159c91a79bc9b6ee481a9fb"]
 
 const sample = array => array[Math.floor(Math.random() * array.length)];
 
-const catSample = array => Math.floor(Math.random() * array.length)
+// const catSample = array => Math.floor(Math.random() * array.length)
 
 const images = [
     {
@@ -67,7 +67,7 @@ const seeDB = async () => {
         const random400 = Math.floor(Math.random() * 400);
         const randCat = Math.floor(Math.random() * 6)
         const random8 = Math.floor(Math.random() * 8)
-        const random3 = Math.floor(Math.random() * 3)
+        // const random3 = Math.floor(Math.random() * 3)
         const price = Math.floor(Math.random() * 20) + 10;
         const location = `${cities[random400].city}, ${cities[random400].admin_name}`
         const geodata = await geocoder.forwardGeocode({
@@ -77,7 +77,7 @@ const seeDB = async () => {
         console.log(category[randCat]._id);
 
         const camp = new Campground({
-            author: 6283dbd35be36101a6d531f6,
+            author: '6283dbd35be36101a6d531f6',
             location: location,
             geometry: geodata.body.features[0].geometry,
             title: `${sample(descriptors)} ${sample(places)}`,
