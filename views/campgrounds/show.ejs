@@ -42,7 +42,7 @@
                     </li>
                     <li class="list-group-item">Rs <%= campground.price %>/night</li>
                 </ul>
-                <% if (currentUser && campground.author === currentUser._id ) { %>
+                <%  if( currentUser && campground.author.equals(currentUser._id)) { %>
                     <div class="card-body">
                         <a class="card-link btn btn-dark" href="/campgrounds/<%= campground._id %>/edit">Edit
                             Campground</a>
