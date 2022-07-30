@@ -7,9 +7,9 @@
 
                     <% campground.image.forEach((image, i)=> { %>
                         <div class="carousel-item <%= i === 0 ? 'active' : '' %> ">
-                            <img src="<%= image.url %>" class="d-block w-100" alt="<%=image.url%>">
+                            <img src="<%= image.show %>" class="d-block w-100" alt="">
                         </div>
-                    <% }) %>
+                        <% }) %>
                     
                 </div>
                 <% if (campground.image.length > 1) { %>
@@ -36,13 +36,15 @@
                     </p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    
+                    <li class="list-group-item">
+                        Submitted by: <%= currentUser.username %>
+                    </li>
                     <li class="list-group-item text-muted">
                         <%= campground.location %>
                     </li>
                     <li class="list-group-item">Rs <%= campground.price %>/night</li>
                 </ul>
-                <% if (currentUser && (campground.author === currentUser._id)) { %>
+                <%  if(campground.author && currentUser && campground.author.username === currentUser.username)  {%>
                     <div class="card-body">
                         <a class="card-link btn btn-dark" href="/campgrounds/<%= campground._id %>/edit">Edit
                             Campground</a>
