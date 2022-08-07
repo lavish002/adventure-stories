@@ -77,7 +77,7 @@ const seeDB = async () => {
         console.log(category[randCat]._id);
 
         const camp = new Campground({
-            author: '6283dbd35be36101a6d531f6',
+            author: '62e65eb86771936ec90530a2',
             location: location,
             geometry: geodata.body.features[0].geometry,
             title: `${sample(descriptors)} ${sample(places)}`,

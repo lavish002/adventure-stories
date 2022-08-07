@@ -36,9 +36,11 @@
                     </p>
                 </div>
                 <ul class="list-group list-group-flush">
+                    <% if(campground.author) { %>
                     <li class="list-group-item">
-                        Submitted by: <%= currentUser.username %>
+                        <p> Submitted by: <%= campground.author.username %> </p>
                     </li>
+                    <% } %>
                     <li class="list-group-item text-muted">
                         <%= campground.location %>
                     </li>
